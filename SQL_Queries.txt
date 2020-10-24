@@ -1,0 +1,4 @@
+drop table if exists cardeal;
+create table cardeal(id int(11) primary key, brand_name varchar(255), model varchar(255), price float, type varchar(255),dealer_name varchar(255),image varchar(255));
+insert into cardeal values(1,'Hyundai','Creta',983000,'SUV','Laxmi Hyundai','hyundai_creta.png');
+insert into cardeal values(2,'Honda','Amaze',619000,'Sedan','Pride Honda','honda_amaze.png');

@@ -31,7 +31,10 @@ public class CustomerController
 	@GetMapping("/customers/{id}")    
 	public Customer getCustomerDetails(@PathVariable("id") String customerId)  
 	{    
-		return customerService.getCustomerById(customerId); 
-	
-}
+		Customer customer = customerService.getCustomerById(customerId); 
+		if(customer!=null) {
+			customerService.setCustomerCapacity(customer);
+		}
+		return customer;
+	}
 }

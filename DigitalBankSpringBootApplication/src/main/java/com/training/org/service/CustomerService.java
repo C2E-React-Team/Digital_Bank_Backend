@@ -28,4 +28,59 @@ public class CustomerService {
 		else
 			return null;
 	}
+	
+	public void setCustomerCapacity(Customer customer) {
+		double totalIncome = customer.getIncome() + customer.getCoapplicantIncome();
+		int points = 0;
+		if(customer.getMaritalStatus().equalsIgnoreCase("No"))
+			points+=2;
+		else
+			points+=1;
+		
+		switch(customer.getDependents()){
+		case "0": points+=4; break;
+		case "1": points+=3; break;
+		case "2": points+=2; break;
+		default: points+=1;
+		}
+		
+		if(customer.getEducation().equalsIgnoreCase("Graduate"))
+			points+=2;
+		else
+			points+=1;
+		
+		if(customer.getSelfEmployed().equalsIgnoreCase("No"))
+			points+=2;
+		else
+			points+=1;
+		
+		if(customer.getCreditHistory()==1)
+			points+=5;
+		else
+			points+=0;
+		
+		switch(customer.getPropertyArea()){
+		case "Rural": points+=3; break;
+		case "Semiurban": points+=2; break;
+		default: points+=1;
+		}
+		
+		int expensePercent = 0;
+		if(points<11)
+			expensePercent = 30;
+		else if(points<16)
+			expensePercent = 25;
+		else expensePercent = 20;
+		
+		double oldEMI = 0;
+		double grossIncome = totalIncome * (100-expensePercent) / 100;
+		double tds = grossIncome*0.6;
+		if(customer.getLoanAmount()!=null) {
+			double rate = 0.05/12;
+			double temp = Math.pow(1+rate, customer.getLoanAmountTerm());
+			oldEMI =   (customer.getLoanAmount() * 1000 * rate * temp) / (temp-1);
+		}
+		double capacity = tds-oldEMI;
+		customer.seteMICapacity(capacity);
+	}
 }

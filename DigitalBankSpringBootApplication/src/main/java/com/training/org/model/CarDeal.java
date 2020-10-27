@@ -1,4 +1,4 @@
-package com.training.org;
+package com.training.org.model;
 
 
 import javax.persistence.Column;

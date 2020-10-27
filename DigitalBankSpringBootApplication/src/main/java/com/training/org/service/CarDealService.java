@@ -1,5 +1,6 @@
-package com.training.org;
-
+package com.training.org.service;
+import com.training.org.model.CarDeal;
+import com.training.org.repository.CarDealRepository;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -76,7 +76,7 @@ public class CustomerService {
 		double grossIncome = totalIncome * (100-expensePercent) / 100;
 		double tds = grossIncome*0.6;
 		if(customer.getLoanAmount()!=null) {
-			double rate = 0.05/12;
+			double rate = 0.08/12;
 			double temp = Math.pow(1+rate, customer.getLoanAmountTerm());
 			oldEMI =   (customer.getLoanAmount() * 1000 * rate * temp) / (temp-1);
 		}

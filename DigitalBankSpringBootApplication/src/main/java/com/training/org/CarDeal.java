@@ -21,6 +21,12 @@ public class CarDeal {
 	private String image;
 	private double price;
 	
+	@Override
+	public String toString() {
+		return "CarDeal [id=" + id + ", brand_name=" + brand_name + ", car_name=" + car_name + ", mileage=" + mileage
+				+ ", engine_displacement=" + engine_displacement + ", seating_capacity=" + seating_capacity + ", type="
+				+ type + ", dealer_name=" + dealer_name + ", image=" + image + ", price=" + price + "]";
+	}
 	public double getPrice() {
 		return price;
 	}

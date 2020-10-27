@@ -1,5 +1,6 @@
 package com.training.org.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -14,20 +15,21 @@ public class Customer {
 	private String dependents;
 	private String education;
 	private String selfEmployed;
-	private double income;
-	private double coapplicantIncome;
-	private double loanAmount;
+	private Double income;
+	private Double coapplicantIncome;
+	private Double loanAmount;
 	private Integer loanAmountTerm;
 	private Integer creditHistory;
 	private String propertyArea;
 	private String loanStatus;
+	private Double eMICapacity;
 	
 	public Customer() {
 		
 	}
 
 	public Customer(String customerId, String sex, String maritalStatus, String dependents, String education,
-			String selfEmployed, double income, double coapplicantIncome, double loanAmount, Integer loanAmountTerm,
+			String selfEmployed, Double income, Double coapplicantIncome, Double loanAmount, Integer loanAmountTerm,
 			Integer creditHistory, String propertyArea, String loanStatus) {
 		super();
 		this.customerId = customerId;
@@ -43,6 +45,27 @@ public class Customer {
 		this.creditHistory = creditHistory;
 		this.propertyArea = propertyArea;
 		this.loanStatus = loanStatus;
+	}
+
+	
+	public Customer(String customerId, String sex, String maritalStatus, String dependents, String education,
+			String selfEmployed, Double income, Double coapplicantIncome, Double loanAmount, Integer loanAmountTerm,
+			Integer creditHistory, String propertyArea, String loanStatus, Double eMICapacity) {
+		super();
+		this.customerId = customerId;
+		this.sex = sex;
+		this.maritalStatus = maritalStatus;
+		this.dependents = dependents;
+		this.education = education;
+		this.selfEmployed = selfEmployed;
+		this.income = income;
+		this.coapplicantIncome = coapplicantIncome;
+		this.loanAmount = loanAmount;
+		this.loanAmountTerm = loanAmountTerm;
+		this.creditHistory = creditHistory;
+		this.propertyArea = propertyArea;
+		this.loanStatus = loanStatus;
+		this.eMICapacity = eMICapacity;
 	}
 
 	public String getCustomerId() {
@@ -93,27 +116,27 @@ public class Customer {
 		this.selfEmployed = selfEmployed;
 	}
 
-	public double getIncome() {
+	public Double getIncome() {
 		return income;
 	}
 
-	public void setIncome(double income) {
+	public void setIncome(Double income) {
 		this.income = income;
 	}
 
-	public double getCoapplicantIncome() {
+	public Double getCoapplicantIncome() {
 		return coapplicantIncome;
 	}
 
-	public void setCoapplicantIncome(double coapplicantIncome) {
+	public void setCoapplicantIncome(Double coapplicantIncome) {
 		this.coapplicantIncome = coapplicantIncome;
 	}
 
-	public double getLoanAmount() {
+	public Double getLoanAmount() {
 		return loanAmount;
 	}
 
-	public void setLoanAmount(double loanAmount) {
+	public void setLoanAmount(Double loanAmount) {
 		this.loanAmount = loanAmount;
 	}
 
@@ -148,6 +171,14 @@ public class Customer {
 	public void setLoanStatus(String loanStatus) {
 		this.loanStatus = loanStatus;
 	}
+	
+	public Double geteMICapacity() {
+		return eMICapacity;
+	}
+
+	public void seteMICapacity(Double eMICapacity) {
+		this.eMICapacity = eMICapacity;
+	}
 
 	@Override
 	public String toString() {
@@ -157,5 +188,8 @@ public class Customer {
 				+ ", loanAmountTerm=" + loanAmountTerm + ", creditHistory=" + creditHistory + ", propertyArea="
 				+ propertyArea + ", loanStatus=" + loanStatus + "]";
 	}
+	
+	
+	
 	
 }

@@ -32,12 +32,18 @@ public class CustomerService {
 	public void setCustomerCapacity(Customer customer) {
 		double totalIncome = customer.getIncome() + customer.getCoapplicantIncome();
 		int points = 0;
-		if(customer.getMaritalStatus().equalsIgnoreCase("No"))
+		if(customer.getMaritalStatus()==null)
+			points+=2;
+		else if(customer.getMaritalStatus().equalsIgnoreCase("No"))
 			points+=2;
 		else
 			points+=1;
-		
-		switch(customer.getDependents()){
+		String dependents;
+		if(customer.getDependents()==null)
+			dependents="";
+		else
+		dependents= customer.getDependents();
+		switch(dependents){
 		case "0": points+=4; break;
 		case "1": points+=3; break;
 		case "2": points+=2; break;
@@ -48,13 +54,15 @@ public class CustomerService {
 			points+=2;
 		else
 			points+=1;
-		
-		if(customer.getSelfEmployed().equalsIgnoreCase("No"))
+		if(customer.getSelfEmployed()==null)
+			points+=2;
+		else if(customer.getSelfEmployed().equalsIgnoreCase("No"))
 			points+=2;
 		else
 			points+=1;
-		
-		if(customer.getCreditHistory()==1)
+		if(customer.getCreditHistory()==null)
+			points+=0;
+		else if(customer.getCreditHistory()==1)
 			points+=5;
 		else
 			points+=0;
@@ -77,7 +85,11 @@ public class CustomerService {
 		double tds = grossIncome*0.6;
 		if(customer.getLoanAmount()!=null) {
 			double rate = 0.08/12;
-			double temp = Math.pow(1+rate, customer.getLoanAmountTerm());
+			double loanTerm;
+			if(customer.getLoanAmountTerm()==null)
+				loanTerm = 360;
+			else loanTerm = customer.getLoanAmountTerm();
+			double temp = Math.pow(1+rate,loanTerm );
 			oldEMI =   (customer.getLoanAmount() * 1000 * rate * temp) / (temp-1);
 		}
 		double capacity = tds-oldEMI;

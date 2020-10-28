@@ -24,9 +24,15 @@ public class CustomerController
 {    
 	@Autowired    
 	private CustomerService customerService;     
+	//@RequestMapping("/customers")    
+	//public List<Customer> getAllUsers()  
+	//{    
+	//	return customerService.getAllCustomers();    
+	//} 
+	
 	@RequestMapping("/customers")    
 	public List<Customer> getAllUsers()  
-	{    
+	{    customerService.getAllCustomers().forEach(customer->customerService.setCustomerCapacity(customer));
 		return customerService.getAllCustomers();    
 	} 
 	

@@ -92,7 +92,7 @@ public class CustomerService {
 			double temp = Math.pow(1+rate,loanTerm );
 			oldEMI =   (customer.getLoanAmount() * 1000 * rate * temp) / (temp-1);
 		}
-		double capacity = tds-oldEMI;
+		double capacity = Math.round((tds-oldEMI)*100.0)/100.0;
 		customer.seteMICapacity(capacity);
 	}
 }

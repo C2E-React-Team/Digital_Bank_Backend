@@ -2,4 +2,6 @@
 
 Create Database test and run queries present in SQL_Queries.txt
 
-Copy Customer_Dataset.csv at '/Program Files/MariaDB 10.5/data/sample/Customer_Dataset.csv' and run queries in Customer_Queries.txt
+Copy Customer_Dataset.csv at '/Program Files/MariaDB 10.5/data/sample/Customer_Dataset.csv' and run queries in Customer_Queries.txt (loans table added)
+
+change properties file password/port

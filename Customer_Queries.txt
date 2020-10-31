@@ -14,5 +14,6 @@ emi DOUBLE,
 car_cost DOUBLE,
 selected_file VARCHAR(100),
 tenure int(10),
-loan_amount DOUBLE
+loan_amount DOUBLE,
+status varchar(100)
 );

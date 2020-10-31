@@ -30,6 +30,7 @@ public class LoanService {
 		//String uuid = String.format("%040d", new BigInteger(UUID.randomUUID().toString().replace("-", ""), 16));
 		String uuid = UUID.randomUUID().toString();
 		loan.setRefId(uuid);
+		loan.setStatus("Applied");
 		
 		return loanRepository.save(loan);
 	}
@@ -43,6 +44,22 @@ public class LoanService {
 	public List<Loan> getCustomerLoans(String customerId){
 		
 		return loanRepository.getByCustomerId(customerId);
+	}
+	
+	public Loan updateStatusApprove(String refId) {
+		Loan updatedLoan = loanRepository.findByRefId(refId);
+		//loan.setStatus(loanDetails.getStatus());
+		//Loan updatedLoan = loanRepository.save(loanDetails);
+		updatedLoan.setStatus("Approved");
+		return loanRepository.save(updatedLoan);
+	}
+	
+	public Loan updateStatusReject(String refId) {
+		Loan updatedLoan = loanRepository.findByRefId(refId);
+		//loan.setStatus(loanDetails.getStatus());
+		//Loan updatedLoan = loanRepository.save(loanDetails);
+		updatedLoan.setStatus("Rejected");
+		return loanRepository.save(updatedLoan);
 	}
 	
 }

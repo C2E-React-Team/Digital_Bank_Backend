@@ -33,11 +33,12 @@ public class Loan {
 	
 	@Column(name="tenure")
 	private double tenure;
-
-	public Loan() {}
 	
-	public Loan(String refId, String selected_file, String car_name, double loan_amount, String customerId,
-			double emi, double car_cost, double tenure) {
+	@Column(name="status")
+	private String status;
+
+	public Loan(String refId, String selected_file, String car_name, double loan_amount, String customerId, double emi,
+			double car_cost, double tenure, String status) {
 		super();
 		this.refId = refId;
 		this.selected_file = selected_file;
@@ -47,15 +48,31 @@ public class Loan {
 		this.emi = emi;
 		this.car_cost = car_cost;
 		this.tenure = tenure;
+		this.status = status;
 	}
+
 
 	@Override
 	public String toString() {
-		return "Loan [refId=" + refId + ", selectedFile=" + selected_file + ", carName=" + car_name
-				+ ", loanAmount=" + loan_amount + ", customerId=" + customerId + ", emi=" + emi + ", carCost="
-				+ car_cost + ", tenure=" + tenure + "]";
+		return "Loan [refId=" + refId + ", selected_file=" + selected_file + ", car_name=" + car_name + ", loan_amount="
+				+ loan_amount + ", customerId=" + customerId + ", emi=" + emi + ", car_cost=" + car_cost + ", tenure="
+				+ tenure + ", status=" + status + "]";
 	}
 
+
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+	public Loan() {}
+	
+	
 	public String getRefId() {
 		return refId;
 	}

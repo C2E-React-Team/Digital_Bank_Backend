@@ -35,6 +35,9 @@ public class LoanService {
 		return loanRepository.save(loan);
 	}
 	
+	public Loan getLoanByRefId(String ref_id) throws Exception {
+		return loanRepository.findByRefId(ref_id);
+	}
 	public Loan deleteLoan(String ref_id) throws Exception {
 		Loan deleted = loanRepository.findByRefId(ref_id);
 		loanRepository.delete(deleted);

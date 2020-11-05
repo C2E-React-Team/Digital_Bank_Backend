@@ -1,8 +1,11 @@
 package com.training.org.model;
 
+import java.util.Arrays;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
@@ -36,28 +39,10 @@ public class Loan {
 	
 	@Column(name="status")
 	private String status;
-
-	public Loan(String refId, String selected_file, String car_name, double loan_amount, String customerId, double emi,
-			double car_cost, double tenure, String status) {
-		super();
-		this.refId = refId;
-		this.selected_file = selected_file;
-		this.car_name = car_name;
-		this.loan_amount = loan_amount;
-		this.customerId = customerId;
-		this.emi = emi;
-		this.car_cost = car_cost;
-		this.tenure = tenure;
-		this.status = status;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Loan [refId=" + refId + ", selected_file=" + selected_file + ", car_name=" + car_name + ", loan_amount="
-				+ loan_amount + ", customerId=" + customerId + ", emi=" + emi + ", car_cost=" + car_cost + ", tenure="
-				+ tenure + ", status=" + status + "]";
-	}
+	
+	@Lob
+	@Column(name="selected_file_data")
+	private byte[] selected_file_data;
 
 
 	public String getStatus() {
@@ -135,6 +120,40 @@ public class Loan {
 
 	public void setTenure(double tenure) {
 		this.tenure = tenure;
+	}
+
+
+	public byte[] getSelected_file_data() {
+		return selected_file_data;
+	}
+
+
+	public void setSelected_file_data(byte[] selected_file_data) {
+		this.selected_file_data = selected_file_data;
+	}
+
+
+	public Loan(String refId, String selected_file, String car_name, double loan_amount, String customerId, double emi,
+			double car_cost, double tenure, String status, byte[] selected_file_data) {
+		super();
+		this.refId = refId;
+		this.selected_file = selected_file;
+		this.car_name = car_name;
+		this.loan_amount = loan_amount;
+		this.customerId = customerId;
+		this.emi = emi;
+		this.car_cost = car_cost;
+		this.tenure = tenure;
+		this.status = status;
+		this.selected_file_data = selected_file_data;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Loan [refId=" + refId + ", selected_file=" + selected_file + ", car_name=" + car_name + ", loan_amount="
+				+ loan_amount + ", customerId=" + customerId + ", emi=" + emi + ", car_cost=" + car_cost + ", tenure="
+				+ tenure + ", status=" + status + ", selected_file_data=" + Arrays.toString(selected_file_data) + "]";
 	}
 	
 	

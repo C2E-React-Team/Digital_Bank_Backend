@@ -17,3 +17,5 @@ tenure int(10),
 loan_amount DOUBLE,
 status varchar(100)
 );
+
+alter table loans add(selected_file_data mediumblob);

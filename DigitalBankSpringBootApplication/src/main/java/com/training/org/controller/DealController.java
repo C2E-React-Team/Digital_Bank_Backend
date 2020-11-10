@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -60,4 +61,22 @@ public class DealController
 		System.out.println("called");
 		return carDeal;
 	}
+	
+	  @PutMapping("/cardeals/editDeal/{id}")
+	  public ResponseEntity<CarDeal> updateDeal(@PathVariable("id") int id, @RequestParam("carDealData") String carDealData, @RequestParam(value = "uploadedImage", required = false) MultipartFile file) throws Exception {
+	    CarDeal carDeal = carDealService.getCarDealById(id);
+
+	    if (carDeal!=null) {
+			ObjectMapper mapper = new ObjectMapper();
+			CarDeal carDealNew = mapper.readValue(carDealData, CarDeal.class);
+			carDealNew.setId(carDeal.getId());
+			if(file!=null)
+				carDealNew.setCarImage(file.getBytes());
+			else
+				carDealNew.setCarImage(carDeal.getCarImage());
+	      return new ResponseEntity<>(carDealService.addCarDeal(carDealNew), HttpStatus.OK);
+	    } else {
+	      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	    }
+	  }
 }

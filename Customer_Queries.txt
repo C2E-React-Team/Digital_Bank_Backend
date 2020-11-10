@@ -24,3 +24,5 @@ alter table cardeal add(car_image mediumblob);
 
 /* give path of images folder having all cars images*/
 update `cardeal` cd set cd.car_image=LOAD_FILE(concat("C:/images/",cd.image));
+
+ ALTER TABLE cardeal MODIFY id int NOT NULL AUTO_INCREMENT;

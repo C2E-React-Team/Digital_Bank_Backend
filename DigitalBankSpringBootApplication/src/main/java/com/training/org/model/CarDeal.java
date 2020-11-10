@@ -5,6 +5,8 @@ import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
@@ -13,6 +15,7 @@ import javax.persistence.Table;
 @Table(name="cardeal", schema="test")
 public class CarDeal {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String brand_name;
 	private String car_name;
@@ -34,7 +37,7 @@ public class CarDeal {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public double getId() {
+	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
@@ -100,10 +103,9 @@ public class CarDeal {
 		this.carImage = carImage;
 	}
 	public CarDeal() {}
-	public CarDeal(Integer id, String brand_name, String car_name, double mileage, double engine_displacement,
+	public CarDeal(String brand_name, String car_name, double mileage, double engine_displacement,
 			double seating_capacity, String type, String dealerName, String image, double price, byte[] carImage) {
 		super();
-		this.id = id;
 		this.brand_name = brand_name;
 		this.car_name = car_name;
 		this.mileage = mileage;
